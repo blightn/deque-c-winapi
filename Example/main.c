@@ -5,8 +5,7 @@
 
 #define DEQUE_SIZE 16
 
-typedef struct
-{
+typedef struct {
 	DEQUE_ENTRY Entry;
 	DWORD		dwNumber;
 } SIMPLE_ENTRY, *PSIMPLE_ENTRY;

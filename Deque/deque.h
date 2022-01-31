@@ -3,8 +3,7 @@
 
 #include <Windows.h>
 
-typedef struct _DEQUE_ENTRY
-{
+typedef struct _DEQUE_ENTRY {
 	struct _DEQUE_ENTRY* Next;
 	struct _DEQUE_ENTRY* Prev;
 	PCRITICAL_SECTION	 pCS;

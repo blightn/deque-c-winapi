@@ -15,8 +15,7 @@
 #define THREAD_COUNT 64 // <= MAXIMUM_WAIT_OBJECTS (64).
 #define WAIT_TIME	 SECTOMS(15)
 
-typedef struct
-{
+typedef struct {
 	DEQUE_ENTRY Entry;
 	SIZE_T		Number;
 } TEST_ENTRY, *PTEST_ENTRY;
