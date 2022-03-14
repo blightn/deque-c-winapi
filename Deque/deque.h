@@ -6,7 +6,7 @@
 typedef struct _DEQUE_ENTRY {
 	struct _DEQUE_ENTRY* Next;
 	struct _DEQUE_ENTRY* Prev;
-	PCRITICAL_SECTION	 pCS;
+	PCRITICAL_SECTION    pCS;
 } DEQUE_ENTRY, *PDEQUE_ENTRY;
 
 PDEQUE_ENTRY DequeInit(BOOL ThreadSafe);

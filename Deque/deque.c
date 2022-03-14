@@ -55,7 +55,7 @@ VOID DequePushFront(PDEQUE_ENTRY pHead, PDEQUE_ENTRY pEntry)
 			EnterCriticalSection(pHead->pCS);
 		}
 
-		*pEntry		 = *pHead;
+		*pEntry      = *pHead;
 		pEntry->Prev = pHead;
 		pHead->Next  = pEntry;
 
@@ -82,7 +82,7 @@ VOID DequePushBack(PDEQUE_ENTRY pHead, PDEQUE_ENTRY pEntry)
 			EnterCriticalSection(pHead->pCS);
 		}
 
-		*pEntry		 = *pHead;
+		*pEntry      = *pHead;
 		pHead->Prev  = pEntry;
 		pEntry->Next = NULL;
 
@@ -114,7 +114,7 @@ PDEQUE_ENTRY DequePopFront(PDEQUE_ENTRY pHead)
 
 		if (pHead->Next)
 		{
-			pEntry		= pHead->Next;
+			pEntry      = pHead->Next;
 			pHead->Next = pEntry->Next;
 
 			if (pHead->Next)
@@ -155,7 +155,7 @@ PDEQUE_ENTRY DequePopBack(PDEQUE_ENTRY pHead)
 			}
 			else
 			{
-				pHead->Prev		  = pEntry->Prev;
+				pHead->Prev       = pEntry->Prev;
 				pHead->Prev->Next = NULL;
 			}
 		}

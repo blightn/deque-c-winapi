@@ -7,13 +7,13 @@
 
 typedef struct {
 	DEQUE_ENTRY Entry;
-	DWORD		dwNumber;
+	DWORD       dwNumber;
 } SIMPLE_ENTRY, *PSIMPLE_ENTRY;
 
 INT wmain(INT Argc, WCHAR* pArgv[], WCHAR* pEnv[])
 {
 	PDEQUE_ENTRY  pDeque = NULL;
-	DWORD		  i;
+	DWORD         i;
 	PSIMPLE_ENTRY pEntry = NULL;
 
 	if (pDeque = DequeInit(FALSE))

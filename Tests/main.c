@@ -8,27 +8,27 @@
 
 #include "..\Deque\deque.h"
 
-#define SECTOMS(s)	 ((s) * 1000)
+#define SECTOMS(s)   ((s) * 1000)
 
-#define DEQUE_SIZE	 128
+#define DEQUE_SIZE   128
 
 #define THREAD_COUNT 64 // <= MAXIMUM_WAIT_OBJECTS (64).
-#define WAIT_TIME	 SECTOMS(15)
+#define WAIT_TIME    SECTOMS(15)
 
 typedef struct {
 	DEQUE_ENTRY Entry;
-	SIZE_T		Number;
+	SIZE_T      Number;
 } TEST_ENTRY, *PTEST_ENTRY;
 
-static PDEQUE_ENTRY g_pDeque	  = NULL;
-static HANDLE		g_hStartEvent = NULL;
+static PDEQUE_ENTRY g_pDeque      = NULL;
+static HANDLE       g_hStartEvent = NULL;
 
 static volatile LONG64 g_llElementsInDeque;
 
 static VOID CheckDequeChain(PDEQUE_ENTRY pHead)
 {
 	PDEQUE_ENTRY pTmp = NULL;
-	INT			 i	  = 0;
+	INT          i    = 0;
 
 	EnterCriticalSection(pHead->pCS);
 
@@ -44,8 +44,8 @@ static VOID CheckDequeChain(PDEQUE_ENTRY pHead)
 static DWORD WINAPI TestThread(PVOID pvParam)
 {
 	PTEST_ENTRY pEntry = NULL;
-	DWORD		dwRes,
-				i;
+	DWORD       dwRes,
+	            i;
 
 	dwRes = WaitForSingleObject(g_hStartEvent, INFINITE);
 	assert(dwRes == WAIT_OBJECT_0);
@@ -72,11 +72,11 @@ static DWORD WINAPI TestThread(PVOID pvParam)
 INT wmain(INT Argc, WCHAR* pArgv[], WCHAR* pEnv[])
 {
 	PTEST_ENTRY pEntry = NULL;
-	SIZE_T		i,
-				Sum1,
-				Sum2;
-	HANDLE		hThreads[THREAD_COUNT];
-	DWORD		dwRes;
+	SIZE_T      i,
+	            Sum1,
+	            Sum2;
+	HANDLE      hThreads[THREAD_COUNT];
+	DWORD       dwRes;
 
 	// 1 - DequeInit()
 	g_pDeque = DequeInit(TRUE);
@@ -259,7 +259,7 @@ INT wmain(INT Argc, WCHAR* pArgv[], WCHAR* pEnv[])
 
 	CheckDequeChain(g_pDeque);
 	assert(InterlockedAdd64(&g_llElementsInDeque, 0) == THREAD_COUNT * DEQUE_SIZE);
-	assert(DequeSize(g_pDeque)						 == THREAD_COUNT * DEQUE_SIZE);
+	assert(DequeSize(g_pDeque)                       == THREAD_COUNT * DEQUE_SIZE);
 
 	Sum2 = 0;
 
